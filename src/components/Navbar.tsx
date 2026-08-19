@@ -73,13 +73,13 @@ export const Navbar: React.FC<NavbarProps> = ({
               </div>
               
               {/* Dropdown for current party with margin to prevent overlap */}
-              <div className="flex items-center gap-1.5 mt-2">
+              <div className="flex items-center gap-1.5 mt-3">
                 <select
                   id="party-selector-dropdown"
                   value={currentParty.id}
                   onChange={(e) => onSelectParty(e.target.value)}
                   aria-label="Select Party Plan"
-                  className="text-xs font-semibold text-stone-700 bg-stone-100 hover:bg-stone-200 border border-stone-200 rounded-md px-2 py-1 max-w-[220px] sm:max-w-[320px] cursor-pointer transition-colors focus:ring-2 focus:ring-amber-500 focus:outline-hidden"
+                  className="text-xs font-bold text-stone-700 bg-stone-50 hover:bg-stone-100 border border-stone-300 rounded-lg px-2.5 py-1.5 max-w-[240px] sm:max-w-[340px] cursor-pointer shadow-xs transition-colors focus:ring-2 focus:ring-amber-500 focus:outline-hidden"
                 >
                   {allParties.map((p) => (
                     <option key={p.id} value={p.id}>
