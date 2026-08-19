@@ -54,7 +54,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className="bg-white border-b border-stone-200 sticky top-0 z-30 shadow-xs mb-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 gap-4">
+        <div className="flex items-center justify-between h-20 gap-4">
           
           {/* Logo & Party selector */}
           <div className="flex items-center gap-3 min-w-0">
@@ -63,7 +63,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
             
             <div className="min-w-0 flex flex-col justify-center">
-              <div className="flex items-center gap-2 flex-wrap">
+              <div className="flex items-center gap-2">
                 <span className="font-extrabold text-stone-900 text-base tracking-tight whitespace-nowrap">
                   CymbalMart
                 </span>
@@ -72,14 +72,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </span>
               </div>
               
-              {/* Dropdown for current party */}
-              <div className="flex items-center gap-1.5 mt-1">
+              {/* Dropdown for current party with margin to prevent overlap */}
+              <div className="flex items-center gap-1.5 mt-2">
                 <select
                   id="party-selector-dropdown"
                   value={currentParty.id}
                   onChange={(e) => onSelectParty(e.target.value)}
                   aria-label="Select Party Plan"
-                  className="text-xs font-semibold text-stone-700 bg-stone-100 hover:bg-stone-200 border border-stone-200 rounded-md px-2 py-1 max-w-[200px] sm:max-w-[280px] truncate cursor-pointer transition-colors focus:ring-2 focus:ring-amber-500 focus:outline-hidden"
+                  className="text-xs font-semibold text-stone-700 bg-stone-100 hover:bg-stone-200 border border-stone-200 rounded-md px-2 py-1 max-w-[220px] sm:max-w-[320px] cursor-pointer transition-colors focus:ring-2 focus:ring-amber-500 focus:outline-hidden"
                 >
                   {allParties.map((p) => (
                     <option key={p.id} value={p.id}>
