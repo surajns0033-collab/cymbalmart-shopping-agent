@@ -628,9 +628,18 @@ Format your response strictly in JSON matching the specified schema.`;
           }
         });
 
-        const responseText = response.text || "{}";
-        const parsed = JSON.parse(responseText);
-
+        let parsed: any = {};
+        try {
+          const responseText = response.text || "{}";
+          parsed = JSON.parse(responseText);
+        } catch (e) {
+          console.warn("Failed to parse Gemini JSON response, using fallback text extraction.");
+          parsed = {
+            replyText: response.text || "I'm here to help optimize your party shopping list!",
+            hasAction: false
+          };
+        }
+ 
         res.json({
           success: true,
           reply: parsed.replyText || "I'm here to help optimize your party shopping list!",
