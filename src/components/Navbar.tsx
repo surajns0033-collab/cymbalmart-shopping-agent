@@ -62,24 +62,24 @@ export const Navbar: React.FC<NavbarProps> = ({
               CM
             </div>
             
-            <div className="min-w-0">
-              <div className="flex items-center gap-2">
-                <span className="font-extrabold text-stone-900 text-base tracking-tight hidden sm:inline">
+            <div className="min-w-0 flex flex-col justify-center">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="font-extrabold text-stone-900 text-base tracking-tight whitespace-nowrap">
                   CymbalMart
                 </span>
-                <span className="bg-amber-100 text-amber-900 text-[11px] px-2 py-0.5 rounded-full font-bold hidden md:inline">
+                <span className="bg-amber-100 text-amber-900 text-[10px] px-2 py-0.5 rounded-full font-bold whitespace-nowrap">
                   Party Planner Agent
                 </span>
               </div>
               
               {/* Dropdown for current party */}
-              <div className="flex items-center gap-1.5 mt-0.5">
+              <div className="flex items-center gap-1.5 mt-1">
                 <select
                   id="party-selector-dropdown"
                   value={currentParty.id}
                   onChange={(e) => onSelectParty(e.target.value)}
                   aria-label="Select Party Plan"
-                  className="text-xs font-semibold text-stone-700 bg-stone-100 hover:bg-stone-200 border-none rounded-md px-2 py-1 max-w-[180px] sm:max-w-[240px] truncate cursor-pointer transition-colors focus:ring-2 focus:ring-amber-500 focus:outline-hidden"
+                  className="text-xs font-semibold text-stone-700 bg-stone-100 hover:bg-stone-200 border border-stone-200 rounded-md px-2 py-1 max-w-[200px] sm:max-w-[280px] truncate cursor-pointer transition-colors focus:ring-2 focus:ring-amber-500 focus:outline-hidden"
                 >
                   {allParties.map((p) => (
                     <option key={p.id} value={p.id}>
