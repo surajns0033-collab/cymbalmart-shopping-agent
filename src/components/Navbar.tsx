@@ -52,38 +52,38 @@ export const Navbar: React.FC<NavbarProps> = ({
     : 0;
 
   return (
-    <header className="bg-white border-b border-stone-200 sticky top-0 z-30 shadow-xs mb-4">
+    <header className="bg-white border-b border-stone-200 sticky top-0 z-30 shadow-xs mb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 gap-4">
+        <div className="flex items-center justify-between h-16 gap-4">
           
           {/* Logo & Party selector */}
-          <div className="flex items-center gap-3 min-w-0 max-w-[280px] sm:max-w-xs md:max-w-sm shrink-0">
+          <div className="flex items-center gap-3 min-w-0">
             <div className="w-10 h-10 rounded-xl bg-amber-600 text-white flex items-center justify-center shadow-xs shrink-0 font-black text-sm tracking-tight">
               CM
             </div>
             
-            <div className="min-w-0 flex flex-col justify-center">
+            <div className="min-w-0">
               <div className="flex items-center gap-2">
-                <span className="font-extrabold text-stone-900 text-base tracking-tight whitespace-nowrap">
+                <span className="font-extrabold text-stone-900 text-base tracking-tight hidden sm:inline">
                   CymbalMart
                 </span>
-                <span className="bg-amber-100 text-amber-900 text-[10px] px-2 py-0.5 rounded-full font-bold whitespace-nowrap hidden sm:inline">
+                <span className="bg-amber-100 text-amber-900 text-[11px] px-2 py-0.5 rounded-full font-bold hidden md:inline">
                   Party Planner Agent
                 </span>
               </div>
               
-              {/* Dropdown for current party with margin to prevent overlap */}
-              <div className="flex items-center gap-1.5 mt-2">
+              {/* Dropdown for current party */}
+              <div className="flex items-center gap-1.5 mt-0.5">
                 <select
                   id="party-selector-dropdown"
                   value={currentParty.id}
                   onChange={(e) => onSelectParty(e.target.value)}
                   aria-label="Select Party Plan"
-                  className="text-xs font-bold text-stone-700 bg-stone-50 hover:bg-stone-100 border border-stone-300 rounded-lg px-2.5 py-1.5 w-full max-w-[200px] sm:max-w-[300px] cursor-pointer shadow-xs transition-colors focus:ring-2 focus:ring-amber-500 focus:outline-hidden"
+                  className="text-xs font-semibold text-stone-700 bg-stone-100 hover:bg-stone-200 border-none rounded-md px-2 py-1 max-w-[180px] sm:max-w-[240px] truncate cursor-pointer transition-colors focus:ring-2 focus:ring-amber-500 focus:outline-hidden"
                 >
                   {allParties.map((p) => (
                     <option key={p.id} value={p.id}>
-                      {p.title}
+                      {p.title} ({p.adultCount + p.childCount} guests)
                     </option>
                   ))}
                 </select>
@@ -92,7 +92,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Center Navigation Tabs */}
-          <nav className="hidden lg:flex items-center gap-1 bg-stone-100 p-1 rounded-xl shrink-0">
+          <nav className="hidden lg:flex items-center gap-1 bg-stone-100 p-1 rounded-xl">
             <button
               id="tab-btn-shopping"
               onClick={() => onSelectTab('shopping')}
@@ -103,7 +103,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               }`}
             >
               <CheckCircle2 className="w-3.5 h-3.5 text-amber-600" />
-              Aisles ({breakdown.purchasedCount}/{breakdown.totalCount})
+              Aisles & Items ({breakdown.purchasedCount}/{breakdown.totalCount})
             </button>
             <button
               id="tab-btn-route"
@@ -115,7 +115,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               }`}
             >
               <Navigation className="w-3.5 h-3.5 text-emerald-600" />
-              Route Map
+              Smart Route Map
             </button>
             <button
               id="tab-btn-menu"
@@ -126,7 +126,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   : 'text-stone-600 hover:text-stone-900'
               }`}
             >
-              Menu ({currentParty.menu?.length || 0})
+              Menu & Recipes ({currentParty.menu?.length || 0})
             </button>
             <button
               id="tab-btn-timeline"
@@ -137,7 +137,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   : 'text-stone-600 hover:text-stone-900'
               }`}
             >
-              Timeline
+              Prep Schedule
             </button>
             <button
               id="tab-btn-formulas"
@@ -149,12 +149,12 @@ export const Navbar: React.FC<NavbarProps> = ({
               }`}
             >
               <Calculator className="w-3.5 h-3.5 text-stone-500" />
-              Calculator
+              Portion Calculator
             </button>
           </nav>
 
           {/* Right Action buttons */}
-          <div className="flex items-center gap-1.5 md:gap-2 shrink-0">
+          <div className="flex items-center gap-2">
             
             {/* Presets Button */}
             <button
@@ -164,6 +164,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="p-2 text-stone-600 hover:text-stone-900 hover:bg-stone-100 rounded-lg text-xs font-medium transition-colors hidden sm:flex items-center gap-1"
             >
               <FolderHeart className="w-4 h-4 text-rose-500" />
+              <span className="hidden md:inline">Templates</span>
             </button>
 
             {/* Export Button */}
@@ -174,6 +175,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="p-2 text-stone-600 hover:text-stone-900 hover:bg-stone-100 rounded-lg text-xs font-medium transition-colors flex items-center gap-1"
             >
               <Share2 className="w-4 h-4 text-indigo-600" />
+              <span className="hidden sm:inline">Export</span>
             </button>
 
             {/* Hands-Free Voice Control Button */}
