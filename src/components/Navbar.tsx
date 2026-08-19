@@ -57,7 +57,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="flex items-center justify-between h-20 gap-4">
           
           {/* Logo & Party selector */}
-          <div className="flex items-center gap-3 min-w-0">
+          <div className="flex items-center gap-3 min-w-0 max-w-[280px] sm:max-w-xs md:max-w-sm shrink-0">
             <div className="w-10 h-10 rounded-xl bg-amber-600 text-white flex items-center justify-center shadow-xs shrink-0 font-black text-sm tracking-tight">
               CM
             </div>
@@ -67,23 +67,23 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span className="font-extrabold text-stone-900 text-base tracking-tight whitespace-nowrap">
                   CymbalMart
                 </span>
-                <span className="bg-amber-100 text-amber-900 text-[10px] px-2 py-0.5 rounded-full font-bold whitespace-nowrap">
+                <span className="bg-amber-100 text-amber-900 text-[10px] px-2 py-0.5 rounded-full font-bold whitespace-nowrap hidden sm:inline">
                   Party Planner Agent
                 </span>
               </div>
               
               {/* Dropdown for current party with margin to prevent overlap */}
-              <div className="flex items-center gap-1.5 mt-3">
+              <div className="flex items-center gap-1.5 mt-2">
                 <select
                   id="party-selector-dropdown"
                   value={currentParty.id}
                   onChange={(e) => onSelectParty(e.target.value)}
                   aria-label="Select Party Plan"
-                  className="text-xs font-bold text-stone-700 bg-stone-50 hover:bg-stone-100 border border-stone-300 rounded-lg px-2.5 py-1.5 max-w-[240px] sm:max-w-[340px] cursor-pointer shadow-xs transition-colors focus:ring-2 focus:ring-amber-500 focus:outline-hidden"
+                  className="text-xs font-bold text-stone-700 bg-stone-50 hover:bg-stone-100 border border-stone-300 rounded-lg px-2.5 py-1.5 w-full max-w-[200px] sm:max-w-[300px] cursor-pointer shadow-xs transition-colors focus:ring-2 focus:ring-amber-500 focus:outline-hidden"
                 >
                   {allParties.map((p) => (
                     <option key={p.id} value={p.id}>
-                      {p.title} ({p.adultCount + p.childCount} guests)
+                      {p.title}
                     </option>
                   ))}
                 </select>
@@ -92,7 +92,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Center Navigation Tabs */}
-          <nav className="hidden lg:flex items-center gap-1 bg-stone-100 p-1 rounded-xl">
+          <nav className="hidden lg:flex items-center gap-1 bg-stone-100 p-1 rounded-xl shrink-0">
             <button
               id="tab-btn-shopping"
               onClick={() => onSelectTab('shopping')}
@@ -103,7 +103,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               }`}
             >
               <CheckCircle2 className="w-3.5 h-3.5 text-amber-600" />
-              Aisles & Items ({breakdown.purchasedCount}/{breakdown.totalCount})
+              Aisles ({breakdown.purchasedCount}/{breakdown.totalCount})
             </button>
             <button
               id="tab-btn-route"
@@ -115,7 +115,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               }`}
             >
               <Navigation className="w-3.5 h-3.5 text-emerald-600" />
-              Smart Route Map
+              Route Map
             </button>
             <button
               id="tab-btn-menu"
@@ -126,7 +126,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   : 'text-stone-600 hover:text-stone-900'
               }`}
             >
-              Menu & Recipes ({currentParty.menu?.length || 0})
+              Menu ({currentParty.menu?.length || 0})
             </button>
             <button
               id="tab-btn-timeline"
@@ -137,7 +137,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   : 'text-stone-600 hover:text-stone-900'
               }`}
             >
-              Prep Schedule
+              Timeline
             </button>
             <button
               id="tab-btn-formulas"
@@ -149,12 +149,12 @@ export const Navbar: React.FC<NavbarProps> = ({
               }`}
             >
               <Calculator className="w-3.5 h-3.5 text-stone-500" />
-              Portion Calculator
+              Calculator
             </button>
           </nav>
 
           {/* Right Action buttons */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 md:gap-2 shrink-0">
             
             {/* Presets Button */}
             <button
@@ -164,7 +164,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="p-2 text-stone-600 hover:text-stone-900 hover:bg-stone-100 rounded-lg text-xs font-medium transition-colors hidden sm:flex items-center gap-1"
             >
               <FolderHeart className="w-4 h-4 text-rose-500" />
-              <span className="hidden md:inline">Templates</span>
             </button>
 
             {/* Export Button */}
@@ -175,7 +174,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="p-2 text-stone-600 hover:text-stone-900 hover:bg-stone-100 rounded-lg text-xs font-medium transition-colors flex items-center gap-1"
             >
               <Share2 className="w-4 h-4 text-indigo-600" />
-              <span className="hidden sm:inline">Export</span>
             </button>
 
             {/* Hands-Free Voice Control Button */}
